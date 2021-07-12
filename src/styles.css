@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans|Sniglet&display=swap);
+
+body {
+  font-family: "Open Sans";
+  margin: auto;
+  color: rgba(130, 2, 99, 1);
+  alignment: center;
+}
+
+.button {
+  border-radius: 3px;
+  background-color: rgba(217, 3, 104, 1);
+  font-family: Sniglet;
+  color: #f5f5f5
+}
+
+.button:hover {
+  background-color: rgba(130, 2, 99, 1);
+  box-shadow: 0 0 5px #000
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Sniglet;
+}
+
+table {
+  width: 70%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  border: solid
+}
+
+td, th {
+  border: thin solid
+}
+
+img {
+  size: auto;
+  width: 400px;
+}
+
+div {
+  flex-direction: row;
+}

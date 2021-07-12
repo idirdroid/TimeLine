@@ -1,0 +1,27 @@
+
+<table>
+  <thead>
+    <td>Id</td>
+    <td>Nom</td>
+    <td>Catégorie</td>
+    <td>Date de création</td>
+    <td>Date de mise à jour</td>
+    <td>Nombre de cartes</td>
+    <td>Editer</td>
+    <td>Jouer</td>
+    <td>Supprimer ?</td>
+  </thead>
+  <tbody>
+  <tr *ngFor="let timeLine of timeLineList | async">
+    <td>{{timeLine?.id}}</td>
+    <td>{{timeLine?.name}}</td>
+    <td>{{timeLine?.category}}</td>
+    <td>{{timeLine?.creationDate}}</td>
+    <td>{{timeLine?.updateDate}}</td>
+    <td>{{timeLine.cardList?.length}}</td>
+    <td><a routerLink="/edit/{{timeLine?.id}}">Editer</a></td>
+    <td><a routerLink="/game/{{timeLine?.id}}">Jouer</a></td>
+    <td><a routerLink="/timeline/{{timeLine?.id}}"><button>Supprimer</button></a></td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,19 @@
+
+<form [formGroup]="responseForm" (ngSubmit)="postResponse()">
+  <label for="response"></label>
+  <input id="response" type="number"  formControlName="response">
+  <button>Deviner</button>
+</form>
+<h1>Carte à Deviner</h1>
+
+
+<div *ngIf="cards as cards">
+  <img src="{{cards[0]?.imageUrl}}" >
+</div>
+
+<h1>Cartes touvées</h1>
+
+<section>
+  <div *ngFor="let card of responseCards"><img src="{{card.imageUrl}}">
+  </div>
+</section>
