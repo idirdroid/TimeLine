@@ -28,4 +28,15 @@ export class GameService {
     //Appel PUT vers l'API
     return this.http.put(this.baseUrl, editGame)
   }
+
+  updateCard(editCard: Card){
+    //Appel PUT vers l'API
+    return this.http.put(this.baseUrl, editCard)
+  }
+
+  deleteCard(deleteCard : Card) {
+    //Appel PUT vers l'API
+    // @ts-ignore
+    return this.http.delete(this.baseUrl, deleteCard)
+  }
 }

@@ -8,13 +8,15 @@ import { GameComponent } from './game/game.component';
 import { EditComponent } from './edit/edit.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { TimelineNewComponent } from './timeline-new/timeline-new.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TimelineListComponent,
     GameComponent,
-    EditComponent
+    EditComponent,
+    TimelineNewComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import {HttpClientModule} from "@angular/common/http";
       {path: 'timeline', component: TimelineListComponent},
       {path: 'timeline/:id', component: TimelineListComponent},
       {path: 'game/:id', component: GameComponent},
-      {path: 'edit/:id', component: EditComponent}
+      {path: 'edit/:id', component: EditComponent},
+      {path: 'timeline-new', component: TimelineNewComponent}
     ])
   ],
   providers: [],

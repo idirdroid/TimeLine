@@ -13,6 +13,7 @@ export class EditComponent implements OnInit {
 
   games: any;
   editGame : any;
+  editSelectedCard : any;
   cards : any;
   response = '';
 
@@ -27,8 +28,8 @@ export class EditComponent implements OnInit {
   })
 
   editCardForm = this.formBuilder.group({
-    name : '',
-    creationDate: '',
+    cardName : '',
+    date: '',
     imageUrl: '',
     description: ''
   })
@@ -49,6 +50,11 @@ export class EditComponent implements OnInit {
       this.games = games;
       this.editGame = this.games.find((i: any) => i.id == this.idTimeLine)
       console.log('Timeline: ' + this.idTimeLine + ' :' + this.cards[0].name);
+      this.editTimeLineForm.patchValue({
+        name : this.editGame.name,
+        category: this.editGame.category,
+        creationDate: this.editGame.creationDate
+      })
     });
 
 
@@ -67,10 +73,44 @@ export class EditComponent implements OnInit {
   }
 
   editCard() {
+    //Construction de la carte
+    this.editSelectedCard = {
+      id: this.editCardForm.get('id')?.value,
+      name: this.editCardForm.get('name')?.value,
+      date: this.editCardForm.get('date')?.value,
+      imageUrl: this.editCardForm.get('imageUrl')?.value,
+      description: this.editCardForm.get('description')?.value
+    }
 
+    console.log(this.editSelectedCard)
+
+    /*return this.gameService.updateCard(editCard).subscribe((response : any) => {
+      console.log(response)
+    })*/
   }
 
   newCard() {
-    this.editCardForm.get('imageUrl')?.reset();
+    this.editCardForm.reset();
+  }
+
+  getCardInfo(card : Card) {
+    console.log(card)
+
+    this.editCardForm.patchValue(
+      {
+        cardName : card.name,
+        date: card.date,
+        imageUrl: card.imageUrl,
+        description : card.description
+    });
+  }
+
+
+  deleteCard(deleteCard: Card) {
+    //Suppression d'une carte
+    console.log(deleteCard)
+    this.gameService.deleteCard(deleteCard).subscribe((response : any) =>{
+      console.log(response);
+    })
   }
 }

@@ -1,11 +1,11 @@
 <h1>Détails du timeline</h1>
 <form [formGroup]="editTimeLineForm" (ngSubmit)="editTimeLine()">
   <label for="name">Nom</label>
-  <input type="text" id="name" value="{{ editGame?.name }}" formControlName="name">
+  <input type="text" id="name" formControlName="name">
   <label for="category">Category</label>
-  <input type="text" id="category" value="{{ editGame?.category }}" formControlName="category">
+  <input type="text" id="category" formControlName="category">
   <label for="creationDate">Date de création</label>
-  <input type="date" id="creationDate" value="{{ editGame?.creationDate }}" formControlName="creationDate">
+  <input type="date" id="creationDate" formControlName="creationDate">
   <button type="submit">Editer <br>la timeLine</button>
 </form>
 
@@ -13,15 +13,15 @@
 
 <h1>Edition d'une carte</h1>
 <form [formGroup]="editCardForm" (ngSubmit)="editCard()">
-  <button (ngclick)="newCard()">Nouvelle Carte</button>
+  <button type="reset" (click)="newCard()">Nouvelle Carte</button>
   <label for="cardName">Nom</label>
-  <input type="text" id="cardName">
-  <label for="cardDate">Date</label>
-  <input type="date" id="cardDate">
+  <input type="text" id="cardName" formcontrolname="cardName">
+  <label for="date">Date</label>
+  <input type="date" id="date" formcontrolname="date">
   <label for="cardUrl">Url</label>
-  <input type="text" id="cardUrl">
-  <label for="cardDescription">Url</label>
-  <input type="text" id="cardDescription">
+  <input type="text" id="cardUrl" formcontrolname="cardUrl">
+  <label for="cardDescription">Description</label>
+  <input type="text" id="cardDescription" formcontrolname="cardDescription">
   <button type="submit">Sauver <br>la carte</button>
 </form>
 
@@ -37,14 +37,14 @@
     <th>Supprimer</th>
   </thead>
   <tbody>
-    <tr *ngFor="let card of cards">
+    <tr *ngFor="let card of cards; let i = index" [attr.data-index]="i">
       <td>{{card?.id}}</td>
       <td>{{card?.name}}</td>
       <td>{{card?.date}}</td>
-      <td>{{card?.imageUrl}}</td>
+      <!--<td>{{card?.imageUrl}}</td>-->
       <td>{{card?.description}}</td>
-      <td><button>Editer</button></td>
-      <td><button>Supprimer</button></td>
+      <td><button (click)="getCardInfo(card)">Editer</button></td>
+      <td><button (click)="deleteCard(card)">Supprimer</button></td>
     </tr>
   </tbody>
 </table>

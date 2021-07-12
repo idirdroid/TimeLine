@@ -1,0 +1,6 @@
+<form [formGroup]="timeLineForm" (ngSubmit)="newTimeLine()">
+  <input type="text" name="name" formcontrolname="name">
+  <input type="text" name="category" formcontrolname="category">
+  <input type="date" name="creationDate" formcontrolname="creationDate">
+  <button type="submit">Sauver le timeline</button>
+</form>
